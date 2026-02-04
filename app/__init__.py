@@ -16,9 +16,7 @@ def create_app():
     app.config['UPLOAD_FOLDER'] = UPLOAD_PATH
     os.makedirs(UPLOAD_PATH, exist_ok=True)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = (
-    'mysql+pymysql://root:Anshu%40123@localhost/Note_app'
-)
+    app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///Note_app'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
