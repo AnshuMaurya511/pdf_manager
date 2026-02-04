@@ -4,3 +4,4 @@ email-validator
 Flask-SQLAlchemy
 Werkzeug
 PyMySQL
+gunicorn
