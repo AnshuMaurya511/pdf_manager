@@ -2,23 +2,30 @@
 {% block title %} Login Page {% endblock %}
 
 {% block content %}
- <form action="{{ url_for('auth.login')}}" method="post">
-        
-        {{ form.hidden_tag() }}
-        <p>{{ form.email.label }}
-        {{ form.email() }}
-        </p>
-        <br>
-        <br>
-        <p>
-        {{ form.password.label }}
-        {{ form.password() }}
-        </p>
-        <br>
-        <br>
-        <button type="submit">login</button>
-    </form>
-    <form action="{{ url_for('registers.sign_up') }}">
-        <button type="submit">Sign Up</button>
-    </form>
+<div class="main_box">
+        <div class="container_box login_box">
+                <form action="{{ url_for('auth.login')}}" method="post">
+                        {{ form.hidden_tag() }}
+
+                        <h1 style="text-align: center;">Login Page</h1>
+                        <div class="container">
+                        <div class="login_email">
+                        <!-- {{ form.email.label }} -->
+                        <br>
+                        {{ form.email(placeholder='Enter Email', class='input_box') }}
+                        </div>
+                        <br>
+                         <div class="login_password">
+                        <!-- {{ form.password.label }} -->
+                        <br>
+                        {{ form.password(placeholder='Enter Password', class='input_box') }}
+                        </div>
+                        <br>
+                        <div class="login_btn">
+                                <button type="submit" id="login_btn">login</button>
+                        </div>   
+                        </div>    
+                </form>
+        </div>
+</div>
 {% endblock %}

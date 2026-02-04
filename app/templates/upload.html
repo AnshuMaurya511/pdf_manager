@@ -3,14 +3,22 @@
 {% block title %} Upload Page {% endblock %}
 
 {% block content %}
-<h2>Upload PDF</h2>
 
-<form enctype="multipart/form-data">
-    <input type="text" name="title" placeholder="Title" required><br><br>
-    <input type="file" name="file" required><br><br>
-    <button type="submit">Upload</button>
-</form>
-
+<div class="main_box">
+    
+    <div class="container_box upload_box">
+        
+<form method="post" enctype="multipart/form-data">
+    <h1 style="text-align: center;">Upload PDF</h1>
+    <br>
+    <br>
+    <input type="text" name="title" placeholder="Enter Title" required class="title input_box"><br><br>
+    <input type="file" name="file" required id="file">
+    <br>
+    <br>
+    <button type="submit" id="btn">Upload</button>
+</form></div>
+</div>
 <a href="{{ url_for('notes.view_notes') }}">View My Notes</a>
 <a href="{{ url_for('auth.logout') }}">Logout</a>
 {% endblock %}

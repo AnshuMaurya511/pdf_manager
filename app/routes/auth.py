@@ -14,7 +14,7 @@ def login():
         if user and check_password_hash(user.password_hashed, form.password.data):
             session['user_id']= user.id
             session['user']=user.fullname
-            flash(f'{session['user_id']} Login Successfully')
+            flash(f'{session['user']} Login Successfully')
             return redirect(url_for('notes.upload_file'))
         
         flash('Invaild Email or Password ')

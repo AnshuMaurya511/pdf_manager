@@ -1,4 +1,5 @@
 from flask import Flask
+import os
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -6,7 +7,15 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'YOUR_SECERT_KEY'
-    app.config['UPLOAD_FOLDER']= 'uploads'
+
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    PROJECT_ROOT = os.path.dirname(BASE_DIR)
+
+    UPLOAD_PATH = os.path.join(PROJECT_ROOT, 'uploads')
+
+    app.config['UPLOAD_FOLDER'] = UPLOAD_PATH
+    os.makedirs(UPLOAD_PATH, exist_ok=True)
+
     app.config['SQLALCHEMY_DATABASE_URI'] = (
     'mysql+pymysql://root:Anshu%40123@localhost/Note_app'
 )

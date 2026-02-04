@@ -3,13 +3,37 @@
 {% block title %} View Notes{% endblock %}
 
 {% block content %}
-<h2>My Notes</h2>
-
-<ul>
-{% for note in notes %}
-    <li>{{ note.title }} — {{ note.filename }}</li>
-{% endfor %}
-</ul>
-
+<div class="main_box notes_box">
+<div class="container_box notes">
+<h1 style="text-align: center;">My Notes</h1>
+<br>
+<nav>
+<a href="{{ url_for('auth.logout') }}">logout</a>
 <a href="{{ url_for('notes.upload_file') }}" >Upload More</a>
+</nav>
+{% if notes %}
+<table class="notes_table">
+    <thead>
+        <th>S.no</th>
+        <th>title</th>
+        <th>Download PDF</th>
+    </thead>
+    <tbody>
+        {% for note in notes %}
+        <tr>
+            <td> {{ loop.index }} </td>
+            <td>{{ note.title }}</td>
+            <td>
+                <a href="{{ url_for('notes.download', note_id=note.id) }}" class="download_btn"> Download</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Uploads New Notes</p>
+{% endif %}
+<br></div></div>
+
+
 {% endblock %}

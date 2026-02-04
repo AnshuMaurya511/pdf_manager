@@ -4,25 +4,43 @@
 
 {% block content %}
 <div class="main_box">
-        <div class="container_box">
-            <form action="{{ url_for('registers.sign_up')}}" method="post">
+                
 
-                <h1> Registration</h1>
+        <div class="container_box reg_box">
+            <form action="{{ url_for('registers.sign_up')}}" method="post">
+                     <h1 style="text-align: center;"> Sign Up</h1>
 
                     {{ form.hidden_tag() }}
-                    {{ form.fullname.label }}
-                    {{ form.fullname() }}
-
-                    {{ form.email.label }}
-                    {{ form.email() }}
-
-                    {{ form.password.label }}
-                    {{ form.password() }}
-
-                    {{ form.confirm.label }}
-                    {{ form.confirm() }}
-                    <button type="submit"> Sign Up </button>
+                <div class="container">
+                    <div class="reg">
+                    <!-- {{ form.fullname.label }} -->
+                    <br>
+                    {{ form.fullname(placeholder='Enter Name', class="fullname input_box") }}
+                    </div>
+                    <br>
+                    <div class="reg">
+                    <!-- {{ form.email.label }} -->
+                    <br>
+                    {{ form.email(placeholder='Enter Email', class="email input_box") }}
+                    </div>
+                    <br>
+                    <div class="reg">
+                    <!-- {{ form.password.label }} -->
+                    <br>
+                    {{ form.password(placeholder='New Password', class="password input_box") }}  
+                    </div>
+                    <br>
+                    <!-- {{ form.confirm.label }} -->
+                    <br>
+                    {{ form.confirm(placeholder='Confirm Password', class="confirm input_box") }}
+                    <br>
+                    <br>
+                    <br>
+                    <div class="btn">
+                    <button type="submit" id="btn"> Sign Up </button></div>
+                </div>
             </form>
         </div>
 </div>
+
 {% endblock %}
