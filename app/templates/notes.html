@@ -7,10 +7,7 @@
 <div class="container_box notes">
 <h1 style="text-align: center;">My Notes</h1>
 <br>
-<nav>
-<a href="{{ url_for('auth.logout') }}">logout</a>
-<a href="{{ url_for('notes.upload_file') }}" >Upload More</a>
-</nav>
+
 {% if notes %}
 <table class="notes_table">
     <thead>
@@ -31,9 +28,6 @@
     </tbody>
 </table>
 {% else %}
-<p>Uploads New Notes</p>
+<p style="color: wheat;">Uploads New Notes</p>
 {% endif %}
-<br></div></div>
-
-
 {% endblock %}

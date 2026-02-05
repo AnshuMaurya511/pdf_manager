@@ -13,7 +13,7 @@ def sign_up():
     if form.validate_on_submit():
         existing = User.query.filter_by(email=form.email.data).first()
         if existing:
-            flash('Email has Already Exist')
+            flash('Email has Already Exist', 'danger')
             return redirect(url_for('registers.sign_up'))
         
         hashed=generate_password_hash(form.password.data)
@@ -26,6 +26,6 @@ def sign_up():
         db.session.add(user)
         db.session.commit()
 
-        flash('Account Create Successfully, Login now')
+        flash('Account Create Successfully, Login now', 'success')
         return redirect(url_for('auth.login'))
     return render_template('register.html', form=form)

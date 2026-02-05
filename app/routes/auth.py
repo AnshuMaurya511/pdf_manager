@@ -14,16 +14,16 @@ def login():
         if user and check_password_hash(user.password_hashed, form.password.data):
             session['user_id']= user.id
             session['user']=user.fullname
-            flash(f'{session['user']} Login Successfully')
+            flash(f'{session['user']} Login Successfully', 'success' )
             return redirect(url_for('notes.upload_file'))
         
-        flash('Invaild Email or Password ')
+        flash('Invaild Email or Password ','danger')
         return redirect(url_for('auth.login'))
     
     return render_template('login.html', form=form)
  
 @auth_bp.route('/logout')
 def logout():
-    session.pop('user', None)
-    flash('Logout Successfully')
+    session.pop('user_id', None)
+    flash('Logout Successfully', 'success')
     return redirect(url_for('auth.login'))

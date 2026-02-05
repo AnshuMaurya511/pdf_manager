@@ -27,7 +27,7 @@ def upload_file():
             db.session.add(note)
             db.session.commit()
 
-            flash('File Upload Successfully')
+            flash('File Upload Successfully','success')
             return redirect(url_for('notes.view_notes'))
         
     return render_template('upload.html')

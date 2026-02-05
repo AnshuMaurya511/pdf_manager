@@ -13,7 +13,13 @@
         <h1>Note Manager App</h1>
         <nav>
             <a href="{{ url_for('auth.login') }}">HOME</a>
-            <a href="{{ url_for('registers.sign_up')}}">SIGN UP</a>
+            {% if 'user_id' in session %}
+            <a href="{{ url_for('notes.view_notes') }}">Notes</a>
+            <a href="{{ url_for('notes.upload_file') }}" >Upload More</a>
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+            {% else %}
+            <a href="{{ url_for('registers.sign_up') }}">SIGN UP</a>
+            {% endif %}
         </nav>
     </header>
     <br>
@@ -21,9 +27,9 @@
  {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}
                 {% for category, message in messages %}
-                    <div>
-                        {{ message }}
-                    </div>
+                   <div class="flask {{ category }}">
+                    {{ message }}
+                   </div>
                 {% endfor %}
             {% endif %}
             {% endwith %}
